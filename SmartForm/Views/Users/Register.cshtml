@@ -1,0 +1,74 @@
+﻿@model SmartForm.Domain.User
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    #container {
+        margin:15px auto;
+    }
+</style>
+<div id="container" class="col-md-4 card p-0">
+    <div class="card-header">
+        <h4 align="center">Registration</h4>
+    </div>
+    <div class="card-body">
+      
+        @if (TempData["Error"] != null) { 
+            <p style="color:red;">@TempData["Error"]</p>
+        }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PasswordHash, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.PasswordFor(model => model.PasswordHash, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DisplayName, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="submit" value="Register" class="btn btn-primary" />
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <p>Already have an account?<a href="@Url.Action("Login","Users")">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

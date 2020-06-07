@@ -1,0 +1,95 @@
+﻿@{
+    Layout = null;
+ }
+
+<div class="col-md-12">
+    <div class="row p-2 formname">
+        <div class="col-md-3 p-0 mr-2">
+            <input type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter FormTemplateName'" placeholder="FormTemplateName" class="templatename form-control" id="formTemplateName" />
+            <input type="hidden" data-guid="" id="formtemplateguid" />
+        </div>
+        <span onclick="saveFormTemplate()" class="mr-2" title="Save FormTemplate"><i class="fa fa-save icon"></i></span>
+    </div>
+
+        <div class="row mt-2">
+            <div class="col-md-3 pl-0 pr-2">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-header-text">Basic Controls</span>
+                    </div>
+                    <div class="card-body d-flex justify-content-between pt-3">
+                        <div class="btn draggable p-0" data-controltype="Text"><span class="material-icons icon">text_fields</span>Text</div>
+                        <div class="btn draggable p-0" data-controltype="TextArea"><span class="material-icons icon">text_format</span>TextArea</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 pl-0 pr-2">
+                <div class="card">
+                    <div class="card-header min-height">
+                        <span id="droppableHeader" class="card-header-text"></span>
+                    </div>
+                    <div class="card-body p-0" id="dropPlaceHolder">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 p-0">
+                <div class="card">
+                    <div class="card-header min-height"><div class="card-header-text d-flex justify-content-between" id="labelfield"><p class="mb-0">Control Property</p></div></div>
+                    <div class="card-body" id="setting">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+
+
+    $(document).ready(function () {
+        $("#dropPlaceHolder").append('<div class="formControlWrapper emptyDiv h-100"><div class="droppable h-100 initial"></div></div>');
+
+
+        $(".draggable").draggable({
+            helper: "clone"
+        });
+
+        $(".emptyDiv").droppable({
+            drop: function (event, ui) {
+                if (!ui.draggable.hasClass('formControlWrapper')) {
+                    var $final = addFormTemplateFields(ui.draggable.data('controltype'));
+                    if (formTemplateFields.length == 1) {
+                        $("#dropPlaceHolder").empty();
+                        $("#dropPlaceHolder").append($final);
+                    }
+                    else {
+                        $(event.target).after($final);
+                    }
+                    $.each($final, function (index, value) {
+
+                        if ($(value).hasClass('emptyDiv')) {
+                            $(value).droppable(droppableOptions);
+                        }
+                        else if ($(value).hasClass('itemDiv')) {
+                            $(value).draggable(draggableOptions);
+                        }
+
+                    })
+                    var formTemplateField = formTemplateFields[formTemplateFields.length - 1];
+                    generateSetting(formTemplateField);
+                }
+            },
+
+            over: function (event, ui) {
+                ui.helper.css('z-index', 1);
+            }
+        });
+
+        $("#dropPlaceHolder").disableSelection();
+    })
+
+</script>
+<script src = "/Scripts/FormTemplates/formtemplate.render.js"></script>

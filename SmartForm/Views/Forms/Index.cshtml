@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SmartForm.ViewModels.FormIndexVM>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .dark {
+        font-size: 1.2rem;
+        color: black;
+        font-weight: 500;
+    }
+
+    select {
+        border-radius: 10px;
+        width: 200px;
+    }
+
+    #filter {
+        cursor: pointer;
+    }
+
+    .card-body {
+        padding: 0.5rem;
+    }
+
+        .card-body:hover {
+            cursor: pointer;
+        }
+
+    select option:hover {
+        background-color: white !important;
+    }
+</style>
+<div class="ml-3">
+    <div class="mt-2 mb-2">
+        <div class="card">
+
+            <div class="card-header extra">
+                <div id="filter">
+                    <span class="card-header-text"><i class="fa fa-filter" aria-hidden="true"></i>Filters</span>
+                    <span class="fa fa-caret-up" id="arrow"></span>
+                </div>
+            </div>
+
+            <div class="card-body p-0" id="filterSection" style="display:none;">
+                <div>
+                    <div class="ml-1 mt-2 row mr-1">
+                        <div class="col-md-12"><label class="dark">FormTemplate</label></div>
+                        <div class="col-md-12">
+                            <select class="form-control" name="FormTemplateName" id="FormTemplateName">
+                                <option value="All">All</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ml-1 mt-2 mb-2 row mr-1">
+                        <div class="col-md-12"><label class="dark">Status</label></div>
+                        <div class="col-md-12">
+                            <select class="form-control" name="Status" id="Status">
+                                <option value="All">All</option>
+                                <option value="Open">Open</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="test">
+
+    </div>
+</div>
+<script>
+    var data = JSON.parse('@Html.Raw(ViewBag.Datas)');
+    var uniqueTemplate = JSON.parse('@Html.Raw(ViewBag.UniqueTemplates)');
+    console.log(data);
+</script>
+<script src="~/Scripts/Forms/formindex.js"></script>

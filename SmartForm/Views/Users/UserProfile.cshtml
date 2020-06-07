@@ -1,0 +1,106 @@
+﻿@model SmartForm.Domain.User
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+<style>
+    .displayname {
+        border: none;
+    }
+
+    .form-control[readonly] {
+        background-color: white;
+    }
+    .container{
+        padding:0px;
+        margin:10px auto;
+    }
+</style>
+
+<div class="container card">
+    <div class="card-header">
+        <span class="card-header-text">User Profile</span>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("UpdateProfile","Users"))
+        {
+            @*@Html.AntiForgeryToken()*@
+
+            <input type="hidden" id="userId" name="UserId" value="@Html.DisplayFor(model => model.UserId)" />
+            <div class="row p-2">
+                <div class="col-md-2"> <strong>@Html.DisplayNameFor(model => model.UserName)</strong></div>
+                <div class="col-md-3">@Html.DisplayFor(model => model.UserName)</div>
+            </div>
+            <div class="row p-2">
+                <div class="col-md-2"><strong>@Html.DisplayNameFor(model => model.Email)</strong></div>
+                <div class="col-md-3">@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })</div>
+            </div>
+            <div class="row p-2">
+                <div class="col-md-2"><strong>@Html.DisplayNameFor(model => model.DisplayName)</strong></div>
+                <div class="col-md-3">@Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })</div>
+            </div>
+            <div class="row p-2">
+                <div class="col-md-2">
+                    <button id="save" class="btn btn-secondary" type="submit">Save</button>
+                </div>
+            </div>
+        }
+        </div>
+</div>
+
+<script>
+
+
+    var initialname;
+    var userid;
+    var finalname;
+    $('body').on('click', '#edit', function () {
+            if ($(this).html() == 'Edit') {
+                $("input[type=text]").removeClass('displayname');
+                $("input[type=text]").removeAttr('readonly');
+                initialname = $("input[type=text]").val();
+                userid = $("input[type=hidden]").val();
+                $("input[type=text]").focus();
+            }
+            else {
+                 finalname = $("input[type=text]").val();
+                if (finalname == initialname) {
+                    $("input[type=text]").addClass('displayname');
+                    $("input[type=text]").attr('readonly');
+                }
+                else if (finalname == "") {
+                    alert("cannot be empty");
+                    $("input[type=text]").focus();
+                    return;
+                }
+                else {
+                    var data = JSON.stringify({
+                        'userid': userid,
+                        'displayname': finalname
+                    });
+                    $.ajax({
+                 type: "POST",
+                 contentType: "application/json",
+                 url: '@Url.Action("EditDisplayName","Users")',
+                        data:data
+                }).done(function (response) {
+                    $("input[type=text]").addClass('displayname');
+                    $("input[type=text]").attr('readonly');
+                    console.log(response.Message);
+                    location.reload(true);
+                })
+                .fail(function (XMLHttpReques, textStatus, errorThrown) {
+                        alert("error happened in ajax request");
+                 });
+
+                }
+            }
+          $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit');
+
+      });
+
+
+
+
+
+</script>

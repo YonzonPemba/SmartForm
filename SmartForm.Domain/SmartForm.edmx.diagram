@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c5d3812de5ce48da85af024680e05388" Name="Diagram1">
+        <EntityTypeShape EntityType="SmartFormModel.DataType" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFormModel.FormData" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFormModel.Form" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFormModel.FormStatu" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartFormModel.FormTemplate" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="SmartFormModel.FK__FormData__FormId__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFormModel.FK__Forms__FormStatu__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartFormModel.FK__Forms__FormTempl__1CF15040" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SmartFormModel.User" Width="1.5" PointX="5.125" PointY="0.75" />
+        <AssociationConnector Association="SmartFormModel.FK__Forms__UserId__1BFD2C07" />
+        <EntityTypeShape EntityType="SmartFormModel.FormTemplateFieldDefinition" Width="1.5" PointX="8.25" PointY="3.125" />
+        <AssociationConnector Association="SmartFormModel.FK__FormTempl__DataT__145C0A3F" />
+        <AssociationConnector Association="SmartFormModel.FK__FormTempl__FormT__15502E78" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

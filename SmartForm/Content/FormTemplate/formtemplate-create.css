@@ -1,0 +1,147 @@
+﻿#droppable {
+    padding: 20px 0px 20px 20px;
+}
+
+.draggable {
+    border:1px solid #c5c5c5;
+    background-color:#f1f0f3;
+    width:100px;
+    height:35px;
+}
+
+.content {
+    border: 2px solid red;
+    background-color: hotpink;
+}
+
+.header {
+    border: 2px solid red;
+}
+
+.highlight {
+    background-color: #e1e5e6;
+}
+
+.formname {
+    border:2px solid gainsboro;
+    background-color:white;
+}
+
+.ui-droppable-hover {
+    border: 2px dashed red !important;
+}
+
+/*.formControlWrapper {
+    border: 2px solid lightgray;
+    margin: 6px auto;
+    padding: 4px;
+    border-radius: 5px;
+}*/
+
+.droppable {
+    padding: 5px;
+}
+
+.initial {
+    background-image: url('drop-here.png');
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+.itemDiv {
+    border: 1px solid lightgray;
+    padding: 4px;
+    border-radius: 5px;
+    max-height:50px;
+}
+
+.emptyDiv {
+}
+
+.sidebar {
+    background-color: #495d67;
+    height: auto;
+}
+
+.sidebar ul {
+    width: 100%;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.sidebar > ul > li {
+    padding-left: 10px;
+    color: white;
+    line-height: 34px;
+    /*border-bottom: 1px solid white;*/
+    font-weight:700;
+}
+
+.sidebar ul ul li {
+    line-height: 28px;
+    border-bottom: none;
+    padding-left:10px;
+    cursor: pointer;
+    font-weight:400;
+}
+
+    .sidebar ul ul li:hover {
+        border-right:4px solid #efefef;
+    }
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.active {
+    border-right: 4px solid #efefef;
+    font-weight: 600 !important;
+}
+
+.dragging {
+width:70%;
+margin:0px auto;
+}
+
+.nested li {
+    display: none;
+}
+
+#accordion:hover {
+    cursor: pointer;
+}
+
+.min-height {
+min-height :33px;
+}
+
+textarea {
+height:38px;
+}
+
+
+#dropPlaceHolder {
+    border:1px solid lightgrey;
+    height:480px; 
+    width:100%;
+    overflow:auto;
+    padding:2px !important;
+}
+
+.icon {
+position:relative;
+top:4px;
+font-size:20px;
+}
+
+
+select option:hover{
+    background-color:white !important;
+}
+
+.btnDelete,.fa-save,#formtemplate_delete_icon {
+    cursor:pointer;
+}

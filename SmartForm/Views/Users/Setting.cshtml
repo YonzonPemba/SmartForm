@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #container {
+        margin: 15px auto;
+    }
+
+    .msg {
+        margin: 10px;
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+    }
+</style>
+<div id="container" class="col-md-5 card p-0">
+    <div class="card-header">
+        <h6 align="center">Update Password</h6>
+    </div>
+    <div class="card-body">
+        @if (TempData["Error"] != null)
+        {
+            <div class="d-flex justify-content-between bg-danger msg">
+                <p class="m-0">@TempData["Error"]</p>
+                <span><i class="fa fa-window-close"></i></span>
+            </div>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <div class="d-flex justify-content-between bg-success msg">
+                <p class="m-0">@TempData["Success"]</p>
+                <span><i class="fa fa-window-close"></i></span>
+            </div>
+        }
+        @using (Html.BeginForm("Setting", "Users"))
+        {
+
+            <div class="row p-2">
+                <div class="col-md-4"> <label>Old Password</label></div>
+                <div class="col-md-8"><input type="password" name="oldpassword" class="form-control" required /></div>
+            </div>
+            <div class="row p-2">
+                <div class="col-md-4"><label>New Password</label></div>
+                <div class="col-md-8"><input type="password" name="newpassword" class="form-control" required /></div>
+            </div>
+            <div class="row p-2 justify-content-between">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-secondary">Update Password</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script>
+    $(".fa-window-close").click(function () {
+        $(this).parents(".msg").remove();
+    })
+</script>

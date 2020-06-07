@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SmartFormModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DataTypes">
+          <Key>
+            <PropertyRef Name="DataTypeId" />
+          </Key>
+          <Property Name="DataTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModfied" Type="datetime" />
+          <Property Name="DateDeleted" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormData">
+          <Key>
+            <PropertyRef Name="FormDataId" />
+          </Key>
+          <Property Name="FormDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FormId" Type="int" Nullable="false" />
+          <Property Name="FlexField1" Type="varchar(max)" />
+          <Property Name="FlexField2" Type="varchar(max)" />
+          <Property Name="FlexField3" Type="varchar(max)" />
+          <Property Name="FlexField4" Type="varchar(max)" />
+          <Property Name="FlexField5" Type="varchar(max)" />
+          <Property Name="FlexField6" Type="varchar(max)" />
+          <Property Name="FlexField7" Type="varchar(max)" />
+          <Property Name="FlexField8" Type="varchar(max)" />
+          <Property Name="FlexField9" Type="varchar(max)" />
+          <Property Name="FlexField10" Type="varchar(max)" />
+          <Property Name="FlexField11" Type="varchar(max)" />
+          <Property Name="FlexField12" Type="varchar(max)" />
+          <Property Name="FlexField13" Type="varchar(max)" />
+          <Property Name="FlexField14" Type="varchar(max)" />
+          <Property Name="FlexField15" Type="varchar(max)" />
+          <Property Name="FlexField16" Type="varchar(max)" />
+          <Property Name="FlexField17" Type="varchar(max)" />
+          <Property Name="FlexField18" Type="varchar(max)" />
+          <Property Name="FlexField19" Type="varchar(max)" />
+          <Property Name="FlexField20" Type="varchar(max)" />
+          <Property Name="FlexField21" Type="varchar(max)" />
+          <Property Name="FlexField22" Type="varchar(max)" />
+          <Property Name="FlexField23" Type="varchar(max)" />
+          <Property Name="FlexField24" Type="varchar(max)" />
+          <Property Name="FlexField25" Type="varchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModfied" Type="datetime" />
+          <Property Name="DateDeleted" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Forms">
+          <Key>
+            <PropertyRef Name="FormId" />
+          </Key>
+          <Property Name="FormId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FormTemplateId" Type="int" Nullable="false" />
+          <Property Name="FormStatus" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModfied" Type="datetime" />
+          <Property Name="DateDeleted" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormStatus">
+          <Key>
+            <PropertyRef Name="FormStatusId" />
+          </Key>
+          <Property Name="FormStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FormStatus" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModfied" Type="datetime" />
+          <Property Name="DateDeleted" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormTemplateFieldDefinitions">
+          <Key>
+            <PropertyRef Name="FormTemplateFieldDefinitionId" />
+          </Key>
+          <Property Name="FormTemplateFieldDefinitionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldName" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="DataTypeId" Type="int" Nullable="false" />
+          <Property Name="LabelFieldName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FormTemplateId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModfied" Type="datetime" />
+          <Property Name="DateDeleted" Type="datetime" />
+          <Property Name="ControlType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormTemplates">
+          <Key>
+            <PropertyRef Name="FormTemplateId" />
+          </Key>
+          <Property Name="FormTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModfied" Type="datetime" />
+          <Property Name="DateDeleted" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModfied" Type="datetime" />
+          <Property Name="DateDeleted" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__FormData__FormId__20C1E124">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="1" />
+          <End Role="FormData" Type="Self.FormData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormId" />
+            </Principal>
+            <Dependent Role="FormData">
+              <PropertyRef Name="FormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forms__FormStatu__1DE57479">
+          <End Role="FormStatus" Type="Self.FormStatus" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormStatus">
+              <PropertyRef Name="FormStatusId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="FormStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forms__FormTempl__1CF15040">
+          <End Role="FormTemplates" Type="Self.FormTemplates" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormTemplates">
+              <PropertyRef Name="FormTemplateId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="FormTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forms__UserId__1BFD2C07">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FormTempl__DataT__145C0A3F">
+          <End Role="DataTypes" Type="Self.DataTypes" Multiplicity="1" />
+          <End Role="FormTemplateFieldDefinitions" Type="Self.FormTemplateFieldDefinitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataTypes">
+              <PropertyRef Name="DataTypeId" />
+            </Principal>
+            <Dependent Role="FormTemplateFieldDefinitions">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FormTempl__FormT__15502E78">
+          <End Role="FormTemplates" Type="Self.FormTemplates" Multiplicity="1" />
+          <End Role="FormTemplateFieldDefinitions" Type="Self.FormTemplateFieldDefinitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormTemplates">
+              <PropertyRef Name="FormTemplateId" />
+            </Principal>
+            <Dependent Role="FormTemplateFieldDefinitions">
+              <PropertyRef Name="FormTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SmartFormModelStoreContainer">
+          <EntitySet Name="DataTypes" EntityType="Self.DataTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormData" EntityType="Self.FormData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormStatus" EntityType="Self.FormStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormTemplateFieldDefinitions" EntityType="Self.FormTemplateFieldDefinitions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormTemplates" EntityType="Self.FormTemplates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FormData__FormId__20C1E124" Association="Self.FK__FormData__FormId__20C1E124">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormData" EntitySet="FormData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forms__FormStatu__1DE57479" Association="Self.FK__Forms__FormStatu__1DE57479">
+            <End Role="FormStatus" EntitySet="FormStatus" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forms__FormTempl__1CF15040" Association="Self.FK__Forms__FormTempl__1CF15040">
+            <End Role="FormTemplates" EntitySet="FormTemplates" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forms__UserId__1BFD2C07" Association="Self.FK__Forms__UserId__1BFD2C07">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FormTempl__DataT__145C0A3F" Association="Self.FK__FormTempl__DataT__145C0A3F">
+            <End Role="DataTypes" EntitySet="DataTypes" />
+            <End Role="FormTemplateFieldDefinitions" EntitySet="FormTemplateFieldDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FormTempl__FormT__15502E78" Association="Self.FK__FormTempl__FormT__15502E78">
+            <End Role="FormTemplates" EntitySet="FormTemplates" />
+            <End Role="FormTemplateFieldDefinitions" EntitySet="FormTemplateFieldDefinitions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SmartFormModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DataType">
+          <Key>
+            <PropertyRef Name="DataTypeId" />
+          </Key>
+          <Property Name="DataTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModfied" Type="DateTime" Precision="3" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FormTemplateFieldDefinitions" Relationship="SmartFormModel.FK__FormTempl__DataT__145C0A3F" FromRole="DataType" ToRole="FormTemplateFieldDefinition" />
+        </EntityType>
+        <EntityType Name="FormData">
+          <Key>
+            <PropertyRef Name="FormDataId" />
+          </Key>
+          <Property Name="FormDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FormId" Type="Int32" Nullable="false" />
+          <Property Name="FlexField1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField11" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField12" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField13" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField14" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField15" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField16" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField17" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField18" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField19" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField20" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField21" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField22" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField23" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField24" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlexField25" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModfied" Type="DateTime" Precision="3" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Form" Relationship="Self.FK__FormData__FormId__20C1E124" FromRole="FormData" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="FormId" />
+          </Key>
+          <Property Name="FormId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FormTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="FormStatus" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModfied" Type="DateTime" Precision="3" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FormDatas" Relationship="Self.FK__FormData__FormId__20C1E124" FromRole="Forms" ToRole="FormData" />
+          <NavigationProperty Name="FormStatu" Relationship="Self.FK__Forms__FormStatu__1DE57479" FromRole="Forms" ToRole="FormStatus" />
+          <NavigationProperty Name="FormTemplate" Relationship="Self.FK__Forms__FormTempl__1CF15040" FromRole="Forms" ToRole="FormTemplates" />
+          <NavigationProperty Name="User" Relationship="SmartFormModel.FK__Forms__UserId__1BFD2C07" FromRole="Form" ToRole="User" />
+        </EntityType>
+        <EntityType Name="FormStatu">
+          <Key>
+            <PropertyRef Name="FormStatusId" />
+          </Key>
+          <Property Name="FormStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FormStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModfied" Type="DateTime" Precision="3" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK__Forms__FormStatu__1DE57479" FromRole="FormStatus" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="FormTemplate">
+          <Key>
+            <PropertyRef Name="FormTemplateId" />
+          </Key>
+          <Property Name="FormTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModfied" Type="DateTime" Precision="3" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK__Forms__FormTempl__1CF15040" FromRole="FormTemplates" ToRole="Forms" />
+          <NavigationProperty Name="FormTemplateFieldDefinitions" Relationship="SmartFormModel.FK__FormTempl__FormT__15502E78" FromRole="FormTemplate" ToRole="FormTemplateFieldDefinition" />
+        </EntityType>
+        <Association Name="FK__FormData__FormId__20C1E124">
+          <End Role="Forms" Type="Self.Form" Multiplicity="1" />
+          <End Role="FormData" Type="Self.FormData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormId" />
+            </Principal>
+            <Dependent Role="FormData">
+              <PropertyRef Name="FormId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forms__FormStatu__1DE57479">
+          <End Role="FormStatus" Type="Self.FormStatu" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormStatus">
+              <PropertyRef Name="FormStatusId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="FormStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forms__FormTempl__1CF15040">
+          <End Role="FormTemplates" Type="Self.FormTemplate" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormTemplates">
+              <PropertyRef Name="FormTemplateId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="FormTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SmartFormEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DataTypes" EntityType="Self.DataType" />
+          <EntitySet Name="FormDatas" EntityType="Self.FormData" />
+          <EntitySet Name="Forms" EntityType="Self.Form" />
+          <EntitySet Name="FormStatus" EntityType="Self.FormStatu" />
+          <EntitySet Name="FormTemplates" EntityType="Self.FormTemplate" />
+          <AssociationSet Name="FK__FormData__FormId__20C1E124" Association="Self.FK__FormData__FormId__20C1E124">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormData" EntitySet="FormDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forms__FormStatu__1DE57479" Association="Self.FK__Forms__FormStatu__1DE57479">
+            <End Role="FormStatus" EntitySet="FormStatus" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forms__FormTempl__1CF15040" Association="Self.FK__Forms__FormTempl__1CF15040">
+            <End Role="FormTemplates" EntitySet="FormTemplates" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="SmartFormModel.User" />
+          <AssociationSet Name="FK__Forms__UserId__1BFD2C07" Association="SmartFormModel.FK__Forms__UserId__1BFD2C07">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Form" EntitySet="Forms" />
+          </AssociationSet>
+          <EntitySet Name="FormTemplateFieldDefinitions" EntityType="SmartFormModel.FormTemplateFieldDefinition" />
+          <AssociationSet Name="FK__FormTempl__DataT__145C0A3F" Association="SmartFormModel.FK__FormTempl__DataT__145C0A3F">
+            <End Role="DataType" EntitySet="DataTypes" />
+            <End Role="FormTemplateFieldDefinition" EntitySet="FormTemplateFieldDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FormTempl__FormT__15502E78" Association="SmartFormModel.FK__FormTempl__FormT__15502E78">
+            <End Role="FormTemplate" EntitySet="FormTemplates" />
+            <End Role="FormTemplateFieldDefinition" EntitySet="FormTemplateFieldDefinitions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModfied" Type="DateTime" Precision="3" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Forms" Relationship="SmartFormModel.FK__Forms__UserId__1BFD2C07" FromRole="User" ToRole="Form" />
+        </EntityType>
+        <Association Name="FK__Forms__UserId__1BFD2C07">
+          <End Type="SmartFormModel.User" Role="User" Multiplicity="1" />
+          <End Type="SmartFormModel.Form" Role="Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Form">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FormTemplateFieldDefinition">
+          <Key>
+            <PropertyRef Name="FormTemplateFieldDefinitionId" />
+          </Key>
+          <Property Name="FormTemplateFieldDefinitionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DataTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LabelFieldName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FormTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModfied" Type="DateTime" Precision="3" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <Property Name="ControlType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DataType" Relationship="SmartFormModel.FK__FormTempl__DataT__145C0A3F" FromRole="FormTemplateFieldDefinition" ToRole="DataType" />
+          <NavigationProperty Name="FormTemplate" Relationship="SmartFormModel.FK__FormTempl__FormT__15502E78" FromRole="FormTemplateFieldDefinition" ToRole="FormTemplate" />
+        </EntityType>
+        <Association Name="FK__FormTempl__DataT__145C0A3F">
+          <End Type="SmartFormModel.DataType" Role="DataType" Multiplicity="1" />
+          <End Type="SmartFormModel.FormTemplateFieldDefinition" Role="FormTemplateFieldDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataType">
+              <PropertyRef Name="DataTypeId" />
+            </Principal>
+            <Dependent Role="FormTemplateFieldDefinition">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FormTempl__FormT__15502E78">
+          <End Type="SmartFormModel.FormTemplate" Role="FormTemplate" Multiplicity="1" />
+          <End Type="SmartFormModel.FormTemplateFieldDefinition" Role="FormTemplateFieldDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormTemplate">
+              <PropertyRef Name="FormTemplateId" />
+            </Principal>
+            <Dependent Role="FormTemplateFieldDefinition">
+              <PropertyRef Name="FormTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SmartFormModelStoreContainer" CdmEntityContainer="SmartFormEntities">
+          <EntitySetMapping Name="DataTypes">
+            <EntityTypeMapping TypeName="SmartFormModel.DataType">
+              <MappingFragment StoreEntitySet="DataTypes">
+                <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModfied" ColumnName="DateModfied" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormDatas">
+            <EntityTypeMapping TypeName="SmartFormModel.FormData">
+              <MappingFragment StoreEntitySet="FormData">
+                <ScalarProperty Name="FormDataId" ColumnName="FormDataId" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="FlexField1" ColumnName="FlexField1" />
+                <ScalarProperty Name="FlexField2" ColumnName="FlexField2" />
+                <ScalarProperty Name="FlexField3" ColumnName="FlexField3" />
+                <ScalarProperty Name="FlexField4" ColumnName="FlexField4" />
+                <ScalarProperty Name="FlexField5" ColumnName="FlexField5" />
+                <ScalarProperty Name="FlexField6" ColumnName="FlexField6" />
+                <ScalarProperty Name="FlexField7" ColumnName="FlexField7" />
+                <ScalarProperty Name="FlexField8" ColumnName="FlexField8" />
+                <ScalarProperty Name="FlexField9" ColumnName="FlexField9" />
+                <ScalarProperty Name="FlexField10" ColumnName="FlexField10" />
+                <ScalarProperty Name="FlexField11" ColumnName="FlexField11" />
+                <ScalarProperty Name="FlexField12" ColumnName="FlexField12" />
+                <ScalarProperty Name="FlexField13" ColumnName="FlexField13" />
+                <ScalarProperty Name="FlexField14" ColumnName="FlexField14" />
+                <ScalarProperty Name="FlexField15" ColumnName="FlexField15" />
+                <ScalarProperty Name="FlexField16" ColumnName="FlexField16" />
+                <ScalarProperty Name="FlexField17" ColumnName="FlexField17" />
+                <ScalarProperty Name="FlexField18" ColumnName="FlexField18" />
+                <ScalarProperty Name="FlexField19" ColumnName="FlexField19" />
+                <ScalarProperty Name="FlexField20" ColumnName="FlexField20" />
+                <ScalarProperty Name="FlexField21" ColumnName="FlexField21" />
+                <ScalarProperty Name="FlexField22" ColumnName="FlexField22" />
+                <ScalarProperty Name="FlexField23" ColumnName="FlexField23" />
+                <ScalarProperty Name="FlexField24" ColumnName="FlexField24" />
+                <ScalarProperty Name="FlexField25" ColumnName="FlexField25" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModfied" ColumnName="DateModfied" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="SmartFormModel.Form">
+              <MappingFragment StoreEntitySet="Forms">
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FormTemplateId" ColumnName="FormTemplateId" />
+                <ScalarProperty Name="FormStatus" ColumnName="FormStatus" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModfied" ColumnName="DateModfied" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormStatus">
+            <EntityTypeMapping TypeName="SmartFormModel.FormStatu">
+              <MappingFragment StoreEntitySet="FormStatus">
+                <ScalarProperty Name="FormStatusId" ColumnName="FormStatusId" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="FormStatus" ColumnName="FormStatus" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModfied" ColumnName="DateModfied" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormTemplates">
+            <EntityTypeMapping TypeName="SmartFormModel.FormTemplate">
+              <MappingFragment StoreEntitySet="FormTemplates">
+                <ScalarProperty Name="FormTemplateId" ColumnName="FormTemplateId" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModfied" ColumnName="DateModfied" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SmartFormModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+                <ScalarProperty Name="DateModfied" ColumnName="DateModfied" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormTemplateFieldDefinitions">
+            <EntityTypeMapping TypeName="SmartFormModel.FormTemplateFieldDefinition">
+              <MappingFragment StoreEntitySet="FormTemplateFieldDefinitions">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+                <ScalarProperty Name="DateModfied" ColumnName="DateModfied" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="FormTemplateId" ColumnName="FormTemplateId" />
+                <ScalarProperty Name="LabelFieldName" ColumnName="LabelFieldName" />
+                <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="FormTemplateFieldDefinitionId" ColumnName="FormTemplateFieldDefinitionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

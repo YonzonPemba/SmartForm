@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+<style>
+    a:hover {
+    text-decoration:none;
+    }
+
+    .loginheader {
+        font-size:25px;
+        font-weight:600;
+    }
+    .card-header {
+        background-color:#c3c3c3;
+    }
+</style>
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" class="col-md-4 col-sm-6 card p-0">
+
+    <div class="card-header text-center loginheader">Login</div>
+    <div class="card-body">
+   
+
+    @if (TempData["Error"] != null)
+    {
+        <p style="color:red;">@TempData["Error"]</p>
+    }
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="username" class="col-md-12 control-label">UserName</label>
+                <div class="col-md-12">
+                    <input type="text" name="UserName" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="col-md-12 control-label">Password</label>
+                <div class="col-md-12">
+                    <input type="password" name="PasswordHash" class="form-control" required />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary form-control">Login</button>
+                    </div>
+                <div class="col-md-12 mt-4">
+                    <p>Not registered? <a href="@Url.Action("Register","Users")">Create an account</a></p>
+                </div>
+            </div>
+        </div>
+    }
+        </div>
+</div>

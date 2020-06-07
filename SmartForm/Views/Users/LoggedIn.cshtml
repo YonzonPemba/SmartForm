@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>You are Logged In @Session["UserName"]</h1>
+
+@using (Html.BeginForm("Logout", "Users", FormMethod.Post))
+{
+    <button type="submit">LogOut!!</button>
+}

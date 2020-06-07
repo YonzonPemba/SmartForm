@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .dark {
+        font-size: 1.2rem;
+        color: black;
+        font-weight: 500;
+    }
+</style>
+<div id="container" class="container">
+
+    @*<div class="row">
+        <div class="col-md-4 text-right">
+            @Html.Label("Status", htmlAttributes: new { @class = "control-label font-weight-bold" })
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("FormStatus", (SelectList)ViewBag.StatusId, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>*@
+    <div class="d-flex justify-content-end mt-2">
+        <div class="col-md-3 text-right">
+            @Html.Label("Status", htmlAttributes: new { @class = "control-label font-weight-bold" })
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("FormStatus", (SelectList)ViewBag.StatusId, htmlAttributes: new { @class = "form-control" })
+        </div>
+        <div class="col-md-1">
+            <span><i class="fa fa-save saveIcon"></i></span>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var datas = JSON.parse('@Html.Raw(ViewBag.Datas)');
+</script>
+<script src="~/Scripts/Forms/formedit.js"></script>

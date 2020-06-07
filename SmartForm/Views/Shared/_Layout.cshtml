@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartForm</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" defer></script>
+    <style>
+        .nav-item > a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-item > a:hover {
+            color: black;
+        }
+
+        .navbar-brand {
+            color: white !important;
+        }
+
+        .card-header-text {
+            color: #111;
+            font-weight: 600;
+        }
+
+        .bg-blue {
+            background-color: #406380eb;
+        }
+
+        nav {
+            box-shadow: 0px 1px 3px 0px #a7a3a3;
+        }
+
+        .card-header {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            background-color: #c3c3c3;
+        }
+
+        .card-footer {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            background-color: #c3c3c3;
+        }
+
+        .saveIcon {
+            font-size: 20px;
+        }
+
+        .icon {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .extra {
+            height: 44px;
+        }
+
+        body {
+            background-color: #a8a8a84a;
+        }
+
+        .modal-lg {
+            max-width: 80% !important;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .dropbtn {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            top: 100%;
+            right: 1%;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 50px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        } 
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropbtn:hover {
+            cursor:pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-blue">
+        <a class="navbar-brand" href="/Forms/Index">SmartForm</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item m-2">@Html.ActionLink("Form", "Create", "Forms")</li>
+                <li class="nav-item m-2">@Html.ActionLink("FormTemplate", "Create", "FormTemplates")</li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item m-2">
+                    <a class="dropbtn" style="color:white;text-decoration:none;">@Session["DisplayName"]</a>
+                    <div id="myDropdown" class="dropdown-content hide">
+                        <a href='@Url.Action("UserProfile","Users")'>Profile</a>
+                        <a href='@Url.Action("Setting","Users")'>Setting</a>
+                        @using (Html.BeginForm("Logout", "Users", FormMethod.Post, new { name = "logout" }))
+                        {
+                            <a href="#" onclick="document.logout.submit()">Logout</a>
+                        }
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="body-content" style="padding-left:0px;">
+        @RenderBody()
+        <footer>
+            @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+<script>
+    $(".dropbtn").click(function () {
+        $("#myDropdown").toggleClass("hide");
+    })
+</script>
